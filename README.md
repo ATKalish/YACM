@@ -3,3 +3,6 @@ A desktop successor to tools like D&D Beyond and fillable PDFs for D&D 5e charac
 
 ## Installation and use
 Todo
+
+## Configuration 
+Todo
