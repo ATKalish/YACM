@@ -9,3 +9,7 @@ Todo
 
 ## JSON Formats
 Todo 
+
+## Contribution Guidelines
+- Feature branch style, of the format `[topic]/[issue]`
+- If you are not a collaborator, fork and set up a PR. Please understand that while forks are welcome PRs may not be accepted, particularly during active development
