@@ -6,3 +6,6 @@ Todo
 
 ## Configuration 
 Todo
+
+## JSON Formats
+Todo 
