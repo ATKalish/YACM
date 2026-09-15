@@ -1,10 +1,6 @@
 #### Ability Types (speculative)
 - Generics
 	- shit like wildshape, like monk's fisticuffs, like the bards' mote, that are things that the player very much *can* do, but don't require much processing beyond generics
-- Wrappers
-	- for when you select an ability and that selection influences things later
-	- keys of prexisting abilities, values of the ability it selects. 
-	- default ability should exist
 - List selection
 	- eg mystic arcanum, you select an item from a list on some events
 	- feats also count for this. Should specify prereqs.
@@ -38,6 +34,7 @@
 	- movement
 	- healing
 	- hidden -- this one is important, for example the player doesn't wanna see ability score increase in their abilities list fuckin' constantly
+- child abilities
 
 ```json
 {
@@ -59,23 +56,12 @@
     "recharge type": ["long rest/short rest/other", "all/dice/number"],
     "recharge val": "inft/4d8+1/2",
   },
-  "tags": ["attack", "action", "melee", "monk"]
+  "tags": ["attack", "action", "melee", "monk"],
+  "sub_abilities": [...], // list of the same type or filepaths 
+  "origin": "someplace"
 }
 ```
 
-#### Wrappers
-```json
-{ //these ones don't provide the user a choice, unlike list selection
-	"type": "wrapper",
-	"name": "wrapper title", //this doesn't override the extension's name, they get combined
-	"text": "more text", //gets combined?
-	"prerequisites": "this is cosmetic",
-	"prereqs": ["ability 1", "ability 2"], //names of existing abilities
-	"ability 1": "./ability_1_extension.json",
-	"ability 2": "./ability_2_extension.json",
-	"default": "./ability_1_extension.json" //we need a default ability
-}
-```
 
 #### List selection
 ```json
@@ -129,7 +115,7 @@
 }
 ```
 
-#### Ability modification
+#### Trait modification
 ```json
 {
 	"type": "ability mod",
@@ -234,7 +220,21 @@
 {
 	"torch": {
 		"description": "text",
-		"ability": "ability.json"
+		"abilities": ["ability.json", ...]
+	}
+}
+```
+
+```json
+{
+	"name": "text",
+	"description": "texttexttexttextetxtextetxetxtsadtf",
+	"age": "text",
+	"alignment": "text",
+	"size": "text",
+	"abilities": ["ability.json", ...], // stuff such as speed, languages, skills, spells, ability score increase, etc..
+	"spellcasting": {
+		// see "class basic concept"
 	}
 }
 ```
