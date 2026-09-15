@@ -1,0 +1,40 @@
+### Class rep
+- level
+	- xp
+- strength, wisdom, etc
+- proficiencies-- animal handling, acrobatics
+- saving throws -- dexterity, intelligence, etc
+- inspiration
+- hp
+	- max hp
+	- current hp
+	- temp hp
+	- hit dice info
+- AC -- player managed, but tracked
+- list of attributes
+	- a map, allows for stuff like ki points, added on things
+- class
+	- contain list of abilities
+	- and other attributes provided
+- race
+	- same as class
+- subclass
+	- same as class
+- spellcasting
+	- spell list
+	- spell slots, used and maximum -- chosen by player, sorta
+	- prepared spells -- chosen by player
+	- known spells -- chosen from player
+	- not sure 100% yet how this will look
+- flavor
+	- alignment
+	- personality traits
+	- backstory text
+	- name
+	- appearance
+	- age
+	- height
+	- weight
+- equipmen
+	- list of items
+	- money
