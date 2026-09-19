@@ -11,4 +11,12 @@ private:
 		string id;
 		int value;
 	} count;
+
+	// TODO: convert to a std::variant
+	bool forSpells;
+	union selection_list_ {
+		vector<Ability*>;
+		//vector<Spell>
+	} selection_list;
+
 };
