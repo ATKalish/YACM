@@ -4,7 +4,7 @@
 class ListSelectionAbility : public Ability {
 private:
 	vector<string> hooks;
-	bool listIsInternal;
+	bool listIsInternal; //not 100% sure what the intention for this is
 	// TODO: convert to a std::variant
 	bool isString; //which union field to use
 	union count_{ //either it is a string id, or a set value
