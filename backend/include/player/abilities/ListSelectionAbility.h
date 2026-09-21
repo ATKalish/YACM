@@ -19,4 +19,15 @@ private:
 		//vector<Spell>
 	} selection_list;
 
+public:
+	class ListBuilder : public Builder {
+		string _name;
+
+		ListBuilder& name(const string& name) {this->_name = name; return *this;}
+		ListSelectionAbility build() {return ListSelectionAbility(this);}
+	};
+
+	ListSelectionAbility(ListBuilder* builder) : Ability(builder) {
+		//
+	}
 };
