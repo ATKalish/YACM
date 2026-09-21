@@ -98,7 +98,8 @@
 	"count type": "number/stat", //stat should be just about any field
 	"count": "[number]/[stat identifier]",
 	"spells": false,
-	"spell lv": 0, //can be omitted if "spells" is false
+	"list path": "", //should be omitted or left blank, if internal list is false it leads somewhere
+	"list": ["ability 1.json", "ability 2.json", "ability 3.json"],
 	"ability": "name of ability to replace" //putting the work on the programmer's end lol
 }
 ```
