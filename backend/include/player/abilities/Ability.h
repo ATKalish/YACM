@@ -87,14 +87,14 @@ public:
 
     ~Ability(){for(int i = 0; i < this->subAbilities.size(); ++i) free(subAbilities[i]);}
 
-    const string& getName(){return this->name;}
-    const string& getText(){return this->text;}
-    const string& getPrereq(){return this->prereq;}
-    bool isOptional(){return this->optional;}
-    bool isHidden(){return this->hidden;}
-    const Scaler& getScaler(){return this->scaler;}
-    const ChargeType& getChargeType(){return this->chargeType;}
-    const vector<string>& getTags(){return this->tags;}
-    const vector<Ability*>& getSubAbilities(){return this->subAbilities;}
-    const string& getOrigin(){return this->origin;}
+    const string& getName() const {return this->name;}
+    const string& getText() const {return this->text;}
+    const string& getPrereq() const {return this->prereq;}
+    bool isOptional() const {return this->optional;}
+    bool isHidden() const {return this->hidden;}
+    const Scaler& getScaler() const {return this->scaler;}
+    const ChargeType& getChargeType() const {return this->chargeType;}
+    const vector<string>& getTags() const {return this->tags;}
+    const vector<Ability*>& getSubAbilities() const {return this->subAbilities;}
+    const string& getOrigin() const {return this->origin;}
 };
