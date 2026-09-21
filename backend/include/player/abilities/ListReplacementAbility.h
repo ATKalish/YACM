@@ -32,4 +32,12 @@ private:
 		this->selectionList = builder->_selectionList;
 		this->targetAbility = builder->_targetAbility;
 	}
+
+	~ListReplacementAbility();
+
+public:
+	const vector<string>& getHooks() const {return this->hooks;}
+	const variant<string, int>& getCount() const {return this->count;}
+	const variant<vector<Ability*>/*, Spell*/> getSelectionList() const {return this->selectionList;}
+	const string& getTargetAbility() const {return this->targetAbility;}
 };
