@@ -23,9 +23,16 @@ public:
 		ListBuilder& count(const variant<string, int>& _count) {this->_count = _count; return *this;}
 		ListBuilder& selection_list(const variant<vector<Ability*>/*, *Spells*/>& _selection_list) {this->_selection_list = _selection_list; return *this;}
 		ListSelectionAbility build() {return ListSelectionAbility(this);}
+
+		friend class ListSelectionAbility;
 	};
 
+private:
 	ListSelectionAbility(ListBuilder* builder) : Ability(builder) {
-		//
+		this->hooks = builder->_hooks;
+		this->listIsInternal = builder->_listIsInternal;
+		this->count = builder->_count;
+		this->selection_list = builder->_selection_list;
 	}
+
 };
