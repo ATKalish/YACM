@@ -35,4 +35,13 @@ private:
 		this->selection_list = builder->_selection_list;
 	}
 
+	// TODO: this is too complicated to define in the header-- but selection_list needs to be deallocated
+	~ListSelectionAbility();
+
+public:
+	const vector<string>& getHooks() const {return this->hooks;}
+	bool isInternalList() const {return this->listIsInternal;}
+	const variant<string, int>& getCount() {return this->count;}
+	const variant<vector<Ability*> /*, vector<Spell>*/>& getList() {return this->selection_list;}
+
 };
