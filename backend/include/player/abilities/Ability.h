@@ -45,7 +45,8 @@ private:
     string origin;
 
 public:
-    struct Builder{
+    class Builder{
+		public:
         string _name;
         string _text;
         string _prereq;
