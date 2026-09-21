@@ -41,7 +41,7 @@ private:
 public:
 	const vector<string>& getHooks() const {return this->hooks;}
 	bool isInternalList() const {return this->listIsInternal;}
-	const variant<string, int>& getCount() {return this->count;}
-	const variant<vector<Ability*> /*, vector<Spell>*/>& getList() {return this->selectionList;}
+	const variant<string, int>& getCount() const {return this->count;}
+	const variant<vector<Ability*> /*, vector<Spell>*/>& getList() const {return this->selectionList;}
 
 };
