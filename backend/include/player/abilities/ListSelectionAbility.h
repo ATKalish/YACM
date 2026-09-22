@@ -6,21 +6,21 @@ class ListSelectionAbility : public Ability {
 private:
 	vector<string> hooks;
 	bool listIsInternal; //not 100% sure what the intention for this is
-	variant<string, int> count;
+	variant<Formula, int> count;
 	variant<vector<Ability*> /*, vector<Spell>*/> selectionList;
 
 public:
 	class Builder : public Ability::Builder {
 		vector<string> _hooks;
 		bool _listIsInternal;
-		variant<string, int> _count;
+		variant<Formula, int> _count;
 		variant<vector<Ability*>/*, *Spells*/> _selectionList;
 
 
 	public:
 		Builder& hooks(const vector<string>& hooks) {this->_hooks = hooks; return *this;}
 		Builder& isInternal(bool isInternal) {this->_listIsInternal = isInternal; return *this;}
-		Builder& count(const variant<string, int>& _count) {this->_count = _count; return *this;}
+		Builder& count(const variant<Formula, int>& _count) {this->_count = _count; return *this;}
 		Builder& selectionList(const variant<vector<Ability*>/*, *Spells*/>& _selectionList) {this->_selectionList = _selectionList; return *this;}
 		ListSelectionAbility build() {return ListSelectionAbility(this);}
 
@@ -41,7 +41,7 @@ private:
 public:
 	const vector<string>& getHooks() const {return this->hooks;}
 	bool isInternalList() const {return this->listIsInternal;}
-	const variant<string, int>& getCount() const {return this->count;}
+	const variant<Formula, int>& getCount() const {return this->count;}
 	const variant<vector<Ability*> /*, vector<Spell>*/>& getList() const {return this->selectionList;}
 
 };
