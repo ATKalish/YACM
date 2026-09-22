@@ -57,9 +57,9 @@ public:
         vector<string> _tags;
         vector<Ability*> _subAbilities;
         string _origin;
-        Builder() = default;
 
 	public:
+        Builder() = default;
         Builder& name(const string& name){this->_name = name; return *this;}
         Builder& text(const string& text){this->_text = text; return *this;}
         Builder& prereq(const string& prereq){this->_prereq = prereq; return *this;}
