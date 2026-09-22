@@ -3,6 +3,7 @@
 #include <vector>
 
 using namespace std;
+typedef string Formula;
 
 class Ability{
 public:

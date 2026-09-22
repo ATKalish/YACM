@@ -6,12 +6,12 @@ class TraitModificationAbility : public Ability {
 private:
 	vector<string> targetTraits;
 	//it can either be a constant value, a value that grows with level, or a formula
-	variant<int, vector<int>, string> value;
+	variant<int, vector<int>, Formula> value;
 public:
 	class Builder : public Ability::Builder {
 	private:
 		vector<string> _targetTraits;
-		variant<int, vector<int>, string> _value;
+		variant<int, vector<int>, Formula> _value;
 
 	public:
 		Builder& targetTraits(const vector<string>& targetTraits) {this->_targetTraits = targetTraits; return *this;}
@@ -28,5 +28,5 @@ private:
 	~TraitModificationAbility();
 public:
 	const vector<string>& getTargetTrait() const {return this->targetTraits;}
-	const variant<int, vector<int>, string> getValue() const {return this->value;}
+	const variant<int, vector<int>, Formula> getValue() const {return this->value;}
 };
