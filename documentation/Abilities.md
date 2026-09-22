@@ -123,10 +123,9 @@
 	"name": "ability score increase",
 	"text": "moar text",
 	"preqrequisites": "this is cosmetic",
-	"type": "const/count/identifier/formula",
-	"stat": ["identifier 1", "identifier 2"], //the output
-	"const val": 8,
-	"count": [[1, 2], [5, 3], [9, 19]], //behaves the same as generics
+	"type": "count/identifier/formula",
+	"trait": ["identifier 1", "identifier 2"], //the target
+	"count": [[1, 2], [5, 3], [9, 19]], //behaves the same as generics (note: const handles here)
 	"identifier": "identifier", //only one source
 	"formula": "[identifier 1]*[identifier 2]+[5]" //this will suck. not 100% sure how it should work.
 	//also it should double check somehow to not go over like 20 str for example

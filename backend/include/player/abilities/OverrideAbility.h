@@ -7,19 +7,19 @@ private:
 	Ability* newAbility;
 
 public:
-	class OverrideBuilder : public Builder {
+	class Builder: public Ability::Builder {
 		Ability* _target;
 		Ability* _newAbility;
 
 	public:
-		OverrideBuilder& target(Ability* target) {this->_target = target; return *this;}
-		OverrideBuilder& newAbility(Ability* newAbility) {this->_newAbility = newAbility; return *this;}
+		Builder& target(Ability* target) {this->_target = target; return *this;}
+		Builder& newAbility(Ability* newAbility) {this->_newAbility = newAbility; return *this;}
 		OverrideAbility build() {return OverrideAbility(this);}
 
 		friend class OverrideAbility;
 	};
 private:
-	OverrideAbility(OverrideBuilder* builder) : Ability(builder) {
+	OverrideAbility(OverrideAbility::Builder* builder) : Ability(builder) {
 		this->target = builder->_target;
 		this->newAbility = builder->_newAbility;
 	}

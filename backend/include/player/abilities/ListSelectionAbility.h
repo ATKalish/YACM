@@ -10,7 +10,7 @@ private:
 	variant<vector<Ability*> /*, vector<Spell>*/> selectionList;
 
 public:
-	class ListSelectionBuilder : public Builder {
+	class Builder : public Ability::Builder {
 		vector<string> _hooks;
 		bool _listIsInternal;
 		variant<string, int> _count;
@@ -18,17 +18,17 @@ public:
 
 
 	public:
-		ListSelectionBuilder& hooks(const vector<string>& hooks) {this->_hooks = hooks; return *this;}
-		ListSelectionBuilder& isInternal(bool isInternal) {this->_listIsInternal = isInternal; return *this;}
-		ListSelectionBuilder& count(const variant<string, int>& _count) {this->_count = _count; return *this;}
-		ListSelectionBuilder& selectionList(const variant<vector<Ability*>/*, *Spells*/>& _selectionList) {this->_selectionList = _selectionList; return *this;}
+		Builder& hooks(const vector<string>& hooks) {this->_hooks = hooks; return *this;}
+		Builder& isInternal(bool isInternal) {this->_listIsInternal = isInternal; return *this;}
+		Builder& count(const variant<string, int>& _count) {this->_count = _count; return *this;}
+		Builder& selectionList(const variant<vector<Ability*>/*, *Spells*/>& _selectionList) {this->_selectionList = _selectionList; return *this;}
 		ListSelectionAbility build() {return ListSelectionAbility(this);}
 
 		friend class ListSelectionAbility;
 	};
 
 private:
-	ListSelectionAbility(ListSelectionBuilder* builder) : Ability(builder) {
+	ListSelectionAbility(ListSelectionAbility::Builder* builder) : Ability(builder) {
 		this->hooks = builder->_hooks;
 		this->listIsInternal = builder->_listIsInternal;
 		this->count = builder->_count;
