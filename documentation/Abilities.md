@@ -167,10 +167,6 @@
 		"spell list": "spell_list.json",
 		"ritual": true,
 		"ability": "[Charisma id/Wisdon id]", //save check is 8+prof+ability; attack roll is prof+ability
-		"Preparing type": "[formula/constant/reference/table]",
-		"Prepared value": "smthn as above",
-		"Known type": "[formula/constant/reference/table]",
-		"Known value": "smthn as above",
 		"Prepared/known flavor text": "text",
 		"spell slots": [
 			[2, 1, 0, ...], //0th is cantrips
