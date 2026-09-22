@@ -45,8 +45,8 @@ private:
     string origin;
 
 public:
-    class Builder{
-		public:
+    class Builder {
+		private:
         string _name;
         string _text;
         string _prereq;
@@ -59,6 +59,7 @@ public:
         string _origin;
         Builder() = default;
 
+	public:
         Builder& name(const string& name){this->_name = name; return *this;}
         Builder& text(const string& text){this->_text = text; return *this;}
         Builder& prereq(const string& prereq){this->_prereq = prereq; return *this;}
@@ -70,6 +71,7 @@ public:
         Builder& subAbilities(const vector<Ability*>& subAbilities){this->_subAbilities = subAbilities; return *this;}
         Builder& origin(const string& origin){this->_origin = origin; return *this;}
         Ability build(){return Ability(this);}
+			friend class Ability;
     };
 
     Ability(Builder* builder){
