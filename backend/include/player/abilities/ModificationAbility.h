@@ -6,7 +6,7 @@
 
 #include <variant>
 
-class ModificationAbililty : public Ability {
+class ModificationAbility : public Ability {
 private:
 	string targetID;
 
