@@ -25,7 +25,6 @@ public:
 
 		friend class ListReplacementAbility;
 	};
-	~ListReplacementAbility();
 private:
 	ListReplacementAbility(ListReplacementAbility::Builder* builder) : Ability(builder) {
 		this->hooks = builder->_hooks;
@@ -40,4 +39,8 @@ public:
 	const variant<Formula, int>& getCount() const {return this->count;}
 	const variant<vector<Ability*>/*, Spell*/> getSelectionList() const {return this->selectionList;}
 	const string& getTargetAbility() const {return this->targetAbility;}
+
+
+	ListReplacementAbility() = default;
+	~ListReplacementAbility();
 };

@@ -26,7 +26,6 @@ public:
 
 		friend class ListSelectionAbility;
 	};
-	~ListSelectionAbility();
 
 private:
 	ListSelectionAbility(ListSelectionAbility::Builder* builder) : Ability(builder) {
@@ -43,4 +42,7 @@ public:
 	bool isInternalList() const {return this->listIsInternal;}
 	const variant<Formula, int>& getCount() const {return this->count;}
 	const variant<vector<Ability*> /*, vector<Spell>*/>& getList() const {return this->selectionList;}
+
+	ListSelectionAbility() = default;
+	~ListSelectionAbility();
 };

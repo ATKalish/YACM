@@ -28,5 +28,8 @@ private:
 public:
 	const vector<string>& getTargetTrait() const {return this->targetTraits;}
 	const variant<int, vector<int>, Formula> getValue() const {return this->value;}
+
+
+	TraitModificationAbility() = default;
 	~TraitModificationAbility();
 };
