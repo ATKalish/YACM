@@ -6,21 +6,57 @@
 
 #include <variant>
 
-class ModificationAbililty : public Ability {
+
+typedef variant<vector<Ability*>, vector<Spell>, vector<Item>> SelectionList;
+typedef variant<Formula, int, vector<int>> SelectionCount;
+
+class ModificationAbility: public Ability {
 private:
 	string targetID;
-
-	variant<vector<Ability*>, vector<Spell>, vector<Item>> selectionList;
-
-	variant<Formula, int, vector<int>> maximumSelectionCount;
-	variant<Formula, int, vector<int>> minimumSelectionCount;
-
 	vector<string> hookIDs;
 
-public:
-	class Builder : public Ability::Builder {};
-	class Decision {};
+	SelectionList selectionList;
+	SelectionCount minCount;
+	SelectionCount maxCount;
 
-	ModificationAbililty() = default;
-	~ModificationAbililty();
+
+public:
+	class Builder : public Ability::Builder {
+	private:
+		string _targetID;
+		vector<string> _hookIDs;
+
+		SelectionList _selectionList;
+		SelectionCount _minCount;
+		SelectionCount _maxCount;
+
+	public:
+		Builder() = default;
+		Builder& targetID(const string& targetID) {this->_targetID = targetID; return *this;}
+		Builder& hookIDs(const vector<string>& hookIDs) {this->_hookIDs = hookIDs; return *this;}
+		Builder& selectionList(const SelectionList& selectionList) {this->_selectionList = selectionList; return *this;}
+		Builder& maxCount(const SelectionCount& maxCount) {this->_maxCount = maxCount; return *this;}
+		Builder& minCount(const SelectionCount& minCount) {this->_minCount = minCount; return *this;}
+		ModificationAbility build() {return ModificationAbility(this);}
+
+		friend class ModificationAbility;
+	};
+	ModificationAbility() = default;
+	~ModificationAbility();
+
+	const string& getTargetID() const {return this->targetID;}
+	const vector<string>& getHookIDs() const {return this->hookIDs;}
+	const SelectionList& getSelectionList() const {return this->selectionList;}
+	const SelectionCount& getMaxCount() const {return this->maxCount;}
+	const SelectionCount& getMinCount() const {return this->minCount;}
+
+
+protected:
+	ModificationAbility(ModificationAbility::Builder* builder) {
+		this->targetID = builder->_targetID;
+		this->hookIDs = builder->_hookIDs;
+		this->selectionList = builder->_selectionList;
+		this->maxCount = builder->_maxCount;
+		this->minCount = builder->_minCount;
+	}
 };

@@ -2,8 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "abilities/TraitModificationAbility.h"
-#include "abilities/ListSelectionAbility.h"
+#include "abilities/ModificationAbility.h"
 #include "Item.h"
 
 using namespace std;
@@ -12,23 +11,21 @@ class Background{
 private:
     string name;
     string description;
-    TraitModificationAbility skillProfiencies;
-    ListSelectionAbility toolProficiencies;
-    ListSelectionAbility languages;
+    ModificationAbility skillProfiencies;
+    ModificationAbility toolProficiencies;
+    ModificationAbility languages;
     vector<Item> equipment;
     vector<Ability*> features;
     string suggestedCharacteristics;
-
-    Background() = default;
 
 public:
     class Builder{
     private:
         string _name;
         string _description;
-        TraitModificationAbility _skillProfiencies;
-        ListSelectionAbility _toolProficiencies;
-        ListSelectionAbility _languages;
+        ModificationAbility _skillProfiencies;
+        ModificationAbility _toolProficiencies;
+        ModificationAbility _languages;
         vector<Item> _equipment;
         vector<Ability*> _features;
         string _suggestedCharacteristics;
@@ -38,9 +35,9 @@ public:
 
         Builder& name(const string& name){this->_name = name; return *this;}
         Builder& description(const string& description){this->_description = description; return *this;}
-        Builder& skillProfiencies(const TraitModificationAbility& skillProfiencies){this->_skillProfiencies = skillProfiencies; return *this;}
-        Builder& toolProficiencies(const ListSelectionAbility& toolProficiencies){this->_toolProficiencies = toolProficiencies; return *this;}
-        Builder& languages(const ListSelectionAbility& languages){this->_languages = languages; return *this;}
+        Builder& skillProfiencies(const ModificationAbility& skillProfiencies){this->_skillProfiencies = skillProfiencies; return *this;}
+        Builder& toolProficiencies(const ModificationAbility& toolProficiencies){this->_toolProficiencies = toolProficiencies; return *this;}
+        Builder& languages(const ModificationAbility& languages){this->_languages = languages; return *this;}
         Builder& equipment(const vector<Item> equipment){this->_equipment = equipment; return *this;}
         Builder& features(const vector<Ability*> features){this->_features = features; return *this;}
         Builder& suggestedCharacteristics(const string& suggestedCharacteristics){this->_suggestedCharacteristics = suggestedCharacteristics; return *this;}
@@ -66,9 +63,9 @@ public:
 
     const string& getname(){return this->name;}
     const string& getDescription(){return this->description;}
-    const TraitModificationAbility& getSkillProficiencies(){return this->skillProfiencies;}
-    const ListSelectionAbility& getToolProficiencies(){return this->toolProficiencies;}
-    const ListSelectionAbility& getLanguages(){return this->languages;}
+    const ModificationAbility& getSkillProficiencies(){return this->skillProfiencies;}
+    const ModificationAbility& getToolProficiencies(){return this->toolProficiencies;}
+    const ModificationAbility& getLanguages(){return this->languages;}
     const vector<Item>& getEquipment(){return this->equipment;}
-    const string suggestedCharacteristics(){return this->suggestedCharacteristics;}
+    const string getSuggestedCharacteristics(){return this->suggestedCharacteristics;}
 };

@@ -1,14 +1,15 @@
 #pragma once
 #include "abilities/Ability.h"
-#include "abilities/ListSelectionAbility.h"
+//#include "abilities/ListSelectionAbility.h"
+#include "abilities/ModificationAbility.h"
 
 class Race {
 private:
 	string name;
 	int speed;
 	string description;
-	ListSelectionAbility languages;
-	ListSelectionAbility proficiencies;
+	ModificationAbility languages;
+	ModificationAbility  proficiencies;
 	vector<Ability*> abilities;
 
 public:
@@ -17,8 +18,8 @@ public:
 		string _name;
 		string _description;
 		int _speed;
-		ListSelectionAbility _languages;
-		ListSelectionAbility _proficiencies;
+		ModificationAbility _languages;
+		ModificationAbility _proficiencies;
 		vector<Ability*> _abilities;
 	public:
 		Builder() = default;
@@ -27,8 +28,8 @@ public:
 		Builder& speed(int speed) {this->_speed = speed; return *this;}
 		Builder& abilities(const vector<Ability*>& abilities) {this->_abilities = abilities; return *this;}
 
-		Builder& languages(const ListSelectionAbility& languages) {this->_languages = languages; return *this;}
-		Builder& abilities(const ListSelectionAbility& proficiencies) {this->_proficiencies = proficiencies; return *this;}
+		Builder& languages(const ModificationAbility & languages) {this->_languages = languages; return *this;}
+		Builder& abilities(const ModificationAbility & proficiencies) {this->_proficiencies = proficiencies; return *this;}
 
 		Race build() {return Race(this);}
 
@@ -50,6 +51,6 @@ public:
 	const string& getDescription() const {return this->description;}
 	const int getSpeed() const {return this->speed; }
 	const vector<Ability*>& getAbilities() const {return this->abilities;};
-	const ListSelectionAbility& getLanguages() const {return this->languages;}
-	const ListSelectionAbility& getProficiencies() const {return this->proficiencies;}
+	const ModificationAbility& getLanguages() const {return this->languages;}
+	const ModificationAbility& getProficiencies() const {return this->proficiencies;}
 };
