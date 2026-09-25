@@ -21,9 +21,26 @@ private:
 
 
 public:
-	class Builder : public Ability::Builder {};
-	class Decision {};
+	class Builder : public Ability::Builder {
+	private:
+		string _targetID;
+		vector<string> _hookIDs;
 
+		SelectionList _selectionList;
+		SelectionCount _minCount;
+		SelectionCount _maxCount;
+
+	public:
+		Builder() = default;
+		Builder& targetID(const string& targetID) {this->_targetID = targetID; return *this;}
+		Builder& hookIDs(const vector<string>& hookIDs) {this->_hookIDs = hookIDs; return *this;}
+		Builder& selectionList(const SelectionList& selectionList) {this->_selectionList = selectionList; return *this;}
+		Builder& maxCount(const SelectionCount& maxCount) {this->_maxCount = maxCount; return *this;}
+		Builder& minCount(const SelectionCount& minCount) {this->_minCount = minCount; return *this;}
+		ModificationAbility build() {return ModificationAbility(this);}
+
+		friend class ModificationAbility;
+	};
 	ModificationAbility() = default;
 	~ModificationAbility();
 
