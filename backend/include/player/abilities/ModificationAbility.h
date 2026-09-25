@@ -6,21 +6,40 @@
 
 #include <variant>
 
-class ModificationAbililty : public Ability {
+
+typedef variant<vector<Ability*>, vector<Spell>, vector<Item>> SelectionList;
+typedef variant<Formula, int, vector<int>> SelectionCount;
+
+class ModificationAbility: public Ability {
 private:
 	string targetID;
-
-	variant<vector<Ability*>, vector<Spell>, vector<Item>> selectionList;
-
-	variant<Formula, int, vector<int>> maximumSelectionCount;
-	variant<Formula, int, vector<int>> minimumSelectionCount;
-
 	vector<string> hookIDs;
+
+	SelectionList selectionList;
+	SelectionCount minCount;
+	SelectionCount maxCount;
+
 
 public:
 	class Builder : public Ability::Builder {};
 	class Decision {};
 
-	ModificationAbililty() = default;
-	~ModificationAbililty();
+	ModificationAbility() = default;
+	~ModificationAbility();
+
+	const string& getTargetID() const {return this->targetID;}
+	const vector<string>& getHookIDs() const {return this->hookIDs;}
+	const SelectionList& getSelectionList() const {return this->selectionList;}
+	const SelectionCount& getMaxCount() const {return this->maxCount;}
+	const SelectionCount& getMinCount() const {return this->minCount;}
+
+
+protected:
+	ModificationAbility(ModificationAbility::Builder* builder) {
+		this->targetID = builder->_targetID;
+		this->hookIDs = builder->_hookIDs;
+		this->selectionList = builder->_selectionList;
+		this->maxCount = builder->_maxCount;
+		this->minCount = builder->_minCount;
+	}
 };
