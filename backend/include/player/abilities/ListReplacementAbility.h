@@ -25,6 +25,7 @@ public:
 
 		friend class ListReplacementAbility;
 	};
+	~ListReplacementAbility();
 private:
 	ListReplacementAbility(ListReplacementAbility::Builder* builder) : Ability(builder) {
 		this->hooks = builder->_hooks;
@@ -33,7 +34,6 @@ private:
 		this->targetAbility = builder->_targetAbility;
 	}
 
-	~ListReplacementAbility();
 
 public:
 	const vector<string>& getHooks() const {return this->hooks;}

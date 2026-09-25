@@ -26,6 +26,7 @@ public:
 
 		friend class ListSelectionAbility;
 	};
+	~ListSelectionAbility();
 
 private:
 	ListSelectionAbility(ListSelectionAbility::Builder* builder) : Ability(builder) {
@@ -36,12 +37,10 @@ private:
 	}
 
 	// TODO: this is too complicated to define in the header-- but selection_list needs to be deallocated
-	~ListSelectionAbility();
 
 public:
 	const vector<string>& getHooks() const {return this->hooks;}
 	bool isInternalList() const {return this->listIsInternal;}
 	const variant<Formula, int>& getCount() const {return this->count;}
 	const variant<vector<Ability*> /*, vector<Spell>*/>& getList() const {return this->selectionList;}
-
 };
