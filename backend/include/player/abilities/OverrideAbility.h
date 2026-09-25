@@ -24,9 +24,11 @@ private:
 		this->newAbility = builder->_newAbility;
 	}
 
-	~OverrideAbility();
 
 public:
 	const Ability* getTarget() const {return this->target;}
 	const Ability* getNewAbility() const {return this->target;}
+
+	OverrideAbility() = default;
+	~OverrideAbility();
 };
