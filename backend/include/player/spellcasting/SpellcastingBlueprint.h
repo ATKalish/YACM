@@ -34,13 +34,13 @@ public:
     public:
         Builder() = default;
 
-        Builder& focus(const string& focus){this->_focus = focus;}
-        Builder& spellList(const vector<Spell> spellList){this->_spellList = spellList;}
-        Builder& ritual(bool ritual){this->_ritual = ritual;}
-        Builder& spellcastingAbilty(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo;}
-        Builder& spellAttackFormula(const Formula& spellAttackFormula){this->_spellAttackFormula = spellAttackFormula;}
-        Builder& spellSaveFormula(const Formula& spellSaveFormula){this->_spellSaveFormula = spellSaveFormula;}
-        Builder& spellPreparation(const string& spellPreparation){this->_spellPreparation = spellPreparation;}
+        Builder& focus(const string& focus){this->_focus = focus; return *this;}
+        Builder& spellList(const vector<Spell> spellList){this->_spellList = spellList; return *this;}
+        Builder& ritual(bool ritual){this->_ritual = ritual; return *this;}
+        Builder& spellcastingAbilty(const string& spellAbiltyInfo){this->_spellAbilityInfo = spellAbiltyInfo; return *this;}
+        Builder& spellAttackFormula(const Formula& spellAttackFormula){this->_spellAttackFormula = spellAttackFormula; return *this;}
+        Builder& spellSaveFormula(const Formula& spellSaveFormula){this->_spellSaveFormula = spellSaveFormula; return *this;}
+        Builder& spellPreparation(const string& spellPreparation){this->_spellPreparation = spellPreparation; return *this;}
         SpellcastingBlueprint build(){return SpellcastingBlueprint(this);}
         friend class SpellcastingBlueprint;
     };
@@ -54,6 +54,8 @@ public:
         this->spellSaveFormula = builder->_spellAttackFormula;
         this->spellPreparation = builder->_spellPreparation;
     }
+
+    SpellcastingBlueprint() = default;
 
     const string& getFocus(){return this->focus;}
     const vector<Spell>& getSpellList(){return this->spellList;};

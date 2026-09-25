@@ -15,7 +15,7 @@ private:
     SpellcastingBlueprint blueprint;
     vector<SpellWrapper> spellList;
     int spellSlots[9];
-
+    
 public:
     Spellcasting(const SpellcastingBlueprint& blueprint);
 
