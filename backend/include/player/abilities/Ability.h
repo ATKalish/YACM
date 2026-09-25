@@ -75,6 +75,7 @@ public:
 			friend class Ability;
     };
 
+protected:
     Ability(Builder* builder){
         this->name = builder->_name;
         this->text = builder->_text;
@@ -88,8 +89,7 @@ public:
         this->origin = builder->_origin;
     }
 
-    ~Ability(){for(int i = 0; i < this->subAbilities.size(); ++i) free(subAbilities[i]);}
-
+public:
     const string& getName() const {return this->name;}
     const string& getText() const {return this->text;}
     const string& getPrereq() const {return this->prereq;}
@@ -100,4 +100,7 @@ public:
     const vector<string>& getTags() const {return this->tags;}
     const vector<Ability*>& getSubAbilities() const {return this->subAbilities;}
     const string& getOrigin() const {return this->origin;}
+
+		Ability() = default;
+    ~Ability(){for(int i = 0; i < this->subAbilities.size(); ++i) free(subAbilities[i]);}
 };
