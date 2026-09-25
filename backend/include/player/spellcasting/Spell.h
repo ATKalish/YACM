@@ -52,6 +52,7 @@ public:
 		friend class Spell;
     };
 
+private:
     Spell(Spell::Builder* builder){
         this->name = builder->_name;
         this->source = builder->_source;
@@ -66,6 +67,7 @@ public:
         this->tags = builder->_tags;
     }
 
+public:
     Spell() = default;
 
 	const string& getName(){return this->name;}

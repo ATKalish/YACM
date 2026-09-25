@@ -45,6 +45,7 @@ public:
         friend class SpellcastingBlueprint;
     };
 
+private:
     SpellcastingBlueprint(SpellcastingBlueprint::Builder* builder){
         this->focus = builder->_focus;
         this->spellList = builder->_spellList;
@@ -55,6 +56,7 @@ public:
         this->spellPreparation = builder->_spellPreparation;
     }
 
+public:
     SpellcastingBlueprint() = default;
 
     const string& getFocus(){return this->focus;}
